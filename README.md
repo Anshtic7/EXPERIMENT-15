@@ -4,7 +4,7 @@
 
 **AIM: To study and implement different data preprocessing techniques such as normalization (Min-Max normalization, Z-score normalization, and Decimal Scaling) and categorical data encoding methods (Label Encoding and One-Hot Encoding) using Python libraries like Pandas, NumPy, and Scikit-learn for preparing datasets for machine learning and data analysis.**
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **THEORY**
 
@@ -85,73 +85,32 @@ where:
 X = original value
 
 U = mean of the feature
-Advantages
-Handles outliers better than Min-Max scaling
-Useful in statistical analysis
-Makes data centered around the mean
 
-In the notebook, Units_Sold is standardized using Z-Score normalization.
+Advantages
+
+--> Handles outliers better than Min-Max scaling
+
+--> Useful in statistical analysis
+
+--> Makes data centered around the mean
 
 5. Decimal Scaling Normalization
 
 Decimal scaling normalizes data by dividing values by a power of 10 so that the maximum value becomes less than 1.
 
-Formula
-𝑋
-𝑛
-𝑜
-𝑟
-𝑚
-=
-𝑋
-10
-𝑗
-X
-norm
-	​
-
-=
-10
-j
-X
-	​
-
+Formula: X(norm) = X/10^j
 
 Where:
 
-𝑋
 X = original value
-𝑗
-j = smallest integer such that 
-𝑚
-𝑎
-𝑥
-(
-∣
-𝑋
-𝑛
-𝑜
-𝑟
-𝑚
-∣
-)
-<
-1
-max(∣X
-norm
-	​
 
-∣)<1
+j = smallest integer such that max(|X(norm)|)<1
 
-Example:
+Advantages:
 
-If the maximum value of price is 55000, dividing by 100000 scales it to 0.55.
+-->Simple technique
 
-Advantages
-Simple technique
-Useful when dealing with large numerical values
-
-In the experiment, Price values are normalized using decimal scaling.
+-->Useful when dealing with large numerical values
 
 6. Categorical Data Encoding
 
@@ -161,55 +120,29 @@ This process is called categorical encoding.
 
 Two encoding techniques used in the experiment are:
 
-Label Encoding
-One-Hot Encoding
-7. Label Encoding
+i) Label Encoding
 
-Label Encoding converts categorical values into numerical labels.
+ii) One-Hot Encoding
 
-Example:
+7. Label Encoding: It converts categorical values into numerical labels.
 
-Gender	Encoded
-Male	1
-Female	0
+Advantages: 
 
-Each category is assigned a unique integer value.
+-->Simple and efficient
 
-Advantages
-Simple and efficient
-Works well for ordinal data (data with natural order)
-Disadvantages
-The model may assume an incorrect order between categories
+-->Works well for ordinal data (data with natural order)
 
-In the experiment, label encoding is applied to:
+Disadvantage: The model may assume an incorrect order between categories.
 
-Customer_Gender
-City
-Payment_Method
-Product_Category
-Placement_Status
+8. One-Hot Encoding: One-Hot Encoding converts categorical variables into multiple binary columns.
 
-using LabelEncoder from sklearn.preprocessing.
+Advantages: 
 
-8. One-Hot Encoding
+-->Prevents the model from assuming ordinal relationships
 
-One-Hot Encoding converts categorical variables into multiple binary columns.
+-->Works well with most machine learning algorithms
 
-Example:
-
-Payment Method	UPI	Credit Card	Debit Card
-UPI	1	0	0
-Credit Card	0	1	0
-
-Each category becomes a separate column with values 0 or 1.
-
-Advantages
-Prevents the model from assuming ordinal relationships
-Works well with most machine learning algorithms
-Disadvantage
-Increases dataset dimensionality when categories are many
-
-In the notebook, pd.get_dummies() is used to perform One-Hot Encoding.
+Disadvantage: Increases dataset dimensionality when categories are many
 
 9. Dummy Variable Encoding
 
@@ -217,26 +150,8 @@ Dummy encoding is a variation of One-Hot Encoding where one category column is d
 
 This avoids the dummy variable trap, which occurs when features become highly correlated.
 
-Example:
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-If a feature has 4 categories, dummy encoding will create 3 columns instead of 4.
+**Conclusion**
 
-In the notebook, this is done using:
-
-pd.get_dummies(drop_first=True)
-10. Real Dataset Implementation
-
-The experiment also applies preprocessing techniques to real datasets such as:
-
-Amazon Products Dataset
-Student Dataset
-
-The following preprocessing tasks are performed:
-
-Min-Max normalization for price
-Z-Score normalization for units sold
-Decimal scaling
-Label encoding of placement status
-One-hot encoding of department
-
-These steps demonstrate how preprocessing prepares datasets for machine learning models and statistical analysis.
+The experiment demonstrated the importance of data preprocessing techniques in preparing datasets for data analysis and machine learning. Different normalization methods such as Min-Max normalization, Z-score normalization, and Decimal Scaling were applied to scale numerical data into comparable ranges. Additionally, categorical data encoding techniques like Label Encoding and One-Hot Encoding were implemented to convert non-numerical data into numerical form. Using Python libraries such as Pandas, NumPy, and Scikit-learn, the dataset was successfully transformed into a structured and machine-readable format, making it suitable for further analysis and model building.
